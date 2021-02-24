@@ -1,0 +1,8 @@
+<fieldset class="form-fieldset actionBar-section">
+    <div class="form-field">
+        <label class="form-label" for="add-all-to-cart">Add All To Cart</label>
+        <button id="add-all-to-cart"
+                data-products="[{{#each products key="id" as |product|}} {{product.id}}{{#unless @last}},{{/unless}} {{/each}}]"
+        ></button>
+    </div>
+</fieldset>

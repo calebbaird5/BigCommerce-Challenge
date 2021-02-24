@@ -51,6 +51,26 @@ export default class Category extends CatalogPage {
       productImgContainer.each((i, el) => {
         el.style.backgroundImage = "url(" + el.dataset.secondImageSrc + ")";
       });
+
+      // Add all to cart
+      $('#add-all-to-cart').click(event => {
+        let productIds = JSON.parse(event.target.dataset.products);
+
+        if (productIds && productIds.length > 0) {
+            let results = productIds.map(productId => {
+              return fetch('/cart.php?action=add&product_id=' + productId);
+            });
+            Promise.all(results)
+            .then((values) => {
+              alert(`The product${values.length > 1 ? 's were': ' was'} successfully added to your cart.`);
+              location.reload(); // this is to get the cart number icon to update.
+                                 // There is probably a better way but this will suffice for now.
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        }
+      });
     }
 
     ariaNotifyNoProducts() {
