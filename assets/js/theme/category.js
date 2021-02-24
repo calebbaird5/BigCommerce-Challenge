@@ -46,6 +46,11 @@ export default class Category extends CatalogPage {
         $('a.reset-btn').on('click', () => this.setLiveRegionsAttributes($('span.reset-message'), 'status', 'polite'));
 
         this.ariaNotifyNoProducts();
+
+      let productImgContainer = $('.card-img-container');
+      productImgContainer.each((i, el) => {
+        el.style.backgroundImage = "url(" + el.dataset.secondImageSrc + ")";
+      });
     }
 
     ariaNotifyNoProducts() {

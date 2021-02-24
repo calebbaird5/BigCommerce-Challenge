@@ -21,7 +21,8 @@
            aria-label="{{name}},{{> components/products/product-aria-label}}"
            {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}
         >
-            <div class="card-img-container">
+        <div class="card-img-container"
+          data-second-image-src={{getImageSrcset images.[1] 1x=(default lqip_size '300w')}}>
                 {{> components/common/responsive-img
                     image=image
                     class="card-image"

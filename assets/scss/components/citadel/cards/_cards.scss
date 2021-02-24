@@ -31,7 +31,21 @@
     padding: 3px;
     overflow: hidden;
 
+    .card-img-container {
+        background-repeat: no-repeat;
+        background-size: 1px;
+        background-position-y: 50%;
+        background-position-x: 50%;
+    }
+
     &:hover {
+        .card-img-container {
+            background-size: 100%;
+        }
+
+        img {
+            visibility: hidden;
+        }
 
         // scss-lint:disable NestingDepth
         .card-figcaption {
