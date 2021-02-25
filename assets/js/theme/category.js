@@ -28,6 +28,16 @@ export default class Category extends CatalogPage {
     }
 
     onReady() {
+
+      fetch('/api/storefront/cart', {
+        credentials: 'include'
+      }).then(response =>  {
+        return response.json();
+      }).then(cartItems => {
+        if (cartItems.length === 0) {
+          $('#remove-all-items').parent().parent().hide();
+        }
+      });
         this.arrangeFocusOnSortBy();
 
         $('[data-button-type="add-cart"]').on('click', (e) => this.setLiveRegionAttributes($(e.currentTarget).next(), 'status', 'polite'));
