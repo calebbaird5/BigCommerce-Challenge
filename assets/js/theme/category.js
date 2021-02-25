@@ -57,18 +57,21 @@ export default class Category extends CatalogPage {
         let productIds = JSON.parse(event.target.dataset.products);
 
         if (productIds && productIds.length > 0) {
-            let results = productIds.map(productId => {
+          Promise.all(
+            productIds.map(productId => {
               return fetch('/cart.php?action=add&product_id=' + productId);
-            });
-            Promise.all(results)
-            .then((values) => {
-              alert(`The product${values.length > 1 ? 's were': ' was'} successfully added to your cart.`);
-              location.reload(); // this is to get the cart number icon to update.
-                                 // There is probably a better way but this will suffice for now.
             })
-            .catch((error) => {
-              console.error(error);
-            });
+
+          ).then((values) => {
+            alert(`The product${values.length > 1 ? 's were': ' was'} successfully added to your cart.`);
+
+            // Reload the page to get the cart number icon to refresh
+            // There is probably a better way but this will suffice for now.
+            location.reload();
+
+          }).catch((error) => {
+            console.error(error);
+          });
         }
       });
 
