@@ -1,0 +1,16 @@
+<div class="cart-actions">
+   <fieldset class="form-fieldset actionBar-section">
+      <div class="form-field">
+         <label class="form-label" for="add-all-to-cart">Add All To Cart</label>
+         <button id="add-all-to-cart"
+                 data-products="[{{#each products key="id" as |product|}} {{product.id}}{{#unless @last}},{{/unless}} {{/each}}]"
+         ></button>
+      </div>
+   </fieldset>
+   <fieldset class="form-fieldset actionBar-section">
+      <div class="form-field">
+         <label class="form-label" for="remove-all-items">Remove All Items</label>
+         <button id="remove-all-items"></button>
+      </div>
+   </fieldset>
+</div>

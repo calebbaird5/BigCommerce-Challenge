@@ -1,7 +1,7 @@
 {{#if category.products}}
     <div class="actions-bar">
         {{> components/products/filter sort=pagination.category.sort products=category.products}}
-        {{> components/category/add-all-to-cart products=category.products}}
+        {{> components/category/cart-actions products=category.products}}
     </div>
 
     <form action="{{urls.compare}}" method='POST' {{#if settings.data_tag_enabled}} data-list-name="Category: {{category.name}}" {{/if}} data-product-compare>

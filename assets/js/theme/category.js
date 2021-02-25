@@ -71,6 +71,33 @@ export default class Category extends CatalogPage {
             });
         }
       });
+
+      $('#remove-all-items').click(event => {
+        fetch('/api/storefront/cart', {
+          credentials: 'include'
+        }).then(response =>  {
+          return response.json();
+        }).then(cartItems => {
+
+          Promise.all(
+            cartItems.map(item => {
+              return fetch('/api/storefront/carts/' + item.id, {
+                credentials: 'include',
+                method: 'DELETE',
+              });
+            })
+          ).then(values => {
+            alert('All items in cart have been removed.');
+
+            // Reload page to get the cart number icon to update.
+            // There is probably a better way but this will suffice for now.
+            location.reload();
+
+          }) .catch(error => {
+            console.error(error);
+          });
+        });
+      });
     }
 
     ariaNotifyNoProducts() {
