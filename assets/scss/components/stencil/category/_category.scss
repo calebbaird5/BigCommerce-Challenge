@@ -14,6 +14,27 @@
     }
 }
 
+#customer-info-banner {
+    background-color: #666666;
+    color: white;
+    padding: 5px 10px;
+
+    h1 {
+        text-align: center;
+        margin: 10px;
+        color: white;
+    }
+    .info {
+        display: flex;
+        justify-content: space-between;
+
+        p>span {
+            margin-right: 7px;
+            font-weight: bold;
+        }
+    }
+}
+
 
 // Category header
 // -----------------------------------------------------------------------------
