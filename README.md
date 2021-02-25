@@ -1,6 +1,6 @@
 # Codeing Challenge
 
-## Link to the Store
+## Link to the Store https://theme-builder-test.mybigcommerce.com/
 
 ## Sign up for a trial with BigCommerce and setup a test store.
 This very simple. Not much to explain:
